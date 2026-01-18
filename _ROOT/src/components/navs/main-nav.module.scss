@@ -1,0 +1,13 @@
+@use "../../styles/variables.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
+
+.mainNavByMariePierreLessard {
+    background-color: $clr-bg-mainnav-by-Marie-Pierre-Lessard;
+    min-height: $size-minimum-dev-by-Marie-Pierre-Lessard;
+    
+    ul {
+        @include horizontalListByMariePierreLessard;
+        justify-self: center;
+    }
+
+}

@@ -1,0 +1,38 @@
+/* **Byg en wrapper til dit indhold**
+Opgavebeskrivelse: 
+Du skal bygge et komponent.
+FÆRDIG - Komponentet skal vise et h1 tag med sidens titel
+FÆRDIG - Komponentet skal vise et h2 tag med en undertitel
+FÆRDIG - Komponentet skal kunne vise child components
+FÆRDIG - Alle data skal komme fra komponentets props
+FÆRDIG - Komponentet skal hentes og vises i App komponentet.
+*/
+
+/* The code of this component is based on the extensive sources provided for my image component (see file atoms/img-el.tsx) 
+and my relatively extensive research on generic interface to use with specific HTML elements 
+(see region of the same name in file main-el.tsx). 
+*/
+
+/* The following module does style the h1 and the h2 (no class name given) */
+import typography from "../../styles/typography.module.scss";
+import type { HTMLAttributes } from "react";
+
+interface sectionOneByMariePierreLessard {
+    h1: string;
+    h2: string;
+    /* children is a reserved word in React! The app will break if I changed it.
+    I found that out in the modal assignment (see folder react-pros-and-cons). Source: Kasper. */
+    children: React.ReactNode;
+};
+
+type extendedGenericInterfaceForS1ByMariePierreLessard = HTMLAttributes<HTMLElement> & sectionOneByMariePierreLessard;
+
+export function SectionOneByMariePierreLessard({ h1, h2, children, ...rest }: extendedGenericInterfaceForS1ByMariePierreLessard) {
+    return (
+        <section {... rest}>
+            <h1>{h1}</h1>
+            <h2>{h2}</h2>
+            {children}
+        </section>
+    );
+};

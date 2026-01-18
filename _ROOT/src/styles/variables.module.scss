@@ -1,0 +1,66 @@
+@use "sass:math";
+
+/* #region Colours */
+/* COLOURS */
+
+$clr-1-by-Marie-Pierre-Lessard: white; //Usually for background of body
+$clr-2-by-Marie-Pierre-Lessard: black; //Usually for most of the text
+$clr-3-by-Marie-Pierre-Lessard: antiquewhite;
+$clr-4-by-Marie-Pierre-Lessard: lightblue;
+
+/* Fonts */
+$clr-font-root-by-Marie-Pierre-Lessard: $clr-2-by-Marie-Pierre-Lessard;
+
+/* Backgrounds */
+$clr-bg-root-by-Marie-Pierre-Lessard: $clr-1-by-Marie-Pierre-Lessard;
+$clr-bg-globalheader-by-Marie-Pierre-Lessard: $clr-3-by-Marie-Pierre-Lessard;
+$clr-bg-mainnav-by-Marie-Pierre-Lessard: $clr-4-by-Marie-Pierre-Lessard;
+$clr-bg-globalfooter-by-Marie-Pierre-Lessard: $clr-3-by-Marie-Pierre-Lessard;
+
+/* #endregion Colours */
+
+/* #region Sizes */
+/* SIZES */
+/* I edited sizes that I defined in react-pros-and-cons and terningespil */
+
+$size-1rem-by-Marie-Pierre-Lessard: 20px; // Applied in scope of :root and more 
+$size-sixthx5-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.833;
+$size-fourthx3-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.75;
+$size-thirdx2-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.666;
+$size-1rem-on-gr-by-Marie-Pierre-Lessard: math.div($size-1rem-by-Marie-Pierre-Lessard, 1.618); //Close to 2/3 rem
+//@debug $size-1rem-on-gr-by-Marie-Pierre-Lessard;
+$size-half-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.5;  
+$size-third-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.333;
+$size-fourth-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.25;
+$size-sixth-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 0.166; // For typographic margins
+
+$size-gr-rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 1.618;
+$size-sixthx5-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.833;
+$size-fourthx3-gr-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.75; // 3/4 of golden ratio = approx. 1.2 rem 
+$size-thirdx2-gr-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.666;
+$size-half-gr-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.5; // 1/2 of golden ratio = approx. 0.8 rem
+$size-third-gr-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.333; // 0.538794 rem
+$size-fourth-gr-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.25; // 1/4 of golden ratio = approx. 0.4 rem
+$size-sixth-gr-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 0.166; // For typographic margins
+
+$size-2rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 2;
+
+$size-gr-squared-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 2) * $size-1rem-by-Marie-Pierre-Lessard; //1.618*1.618=2.617924
+//@debug $size-gr-squared-rem-by-Marie-Pierre-Lessard;
+$size-sixth-gr-squared-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 2) * $size-1rem-by-Marie-Pierre-Lessard * 0.167; // For typographic margins
+
+$size-3rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 3;
+$size-gr-cubed-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 3) * $size-1rem-by-Marie-Pierre-Lessard;
+
+/* Both vertical and horizontal */
+$size-small-spacing-by-Marie-Pierre-Lessard: $size-1rem-on-gr-by-Marie-Pierre-Lessard; // Applied to gaps, etc., in navs, grids, flex containers, ... 
+/* Vertical */
+$size-minimum-dev-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard; // Applied during development (testing, placeholders)
+$size-empty-page-by-Marie-Pierre-Lessard: 400px; // Min. height applied to <main> 
+$size-main-top-mg-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard; // Under nav/header 
+$size-main-bottom-mg-by-Marie-Pierre-Lessard: $size-gr-squared-rem-by-Marie-Pierre-Lessard; // Above global footer 
+/* Horizontal */
+$size-primary-wrapper-by-Marie-Pierre-Lessard: 1300px;
+$size-secondary-wrapper-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard;
+
+/* #endregion Sizes */

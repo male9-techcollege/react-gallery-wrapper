@@ -1,0 +1,24 @@
+@use "../../styles/variables.module.scss" as *;
+@use "../../styles/mixins.module.scss" as *;
+
+.gridWoPassePartoutByMariePierreLessard {
+    @include gridMobilesWRegGapByMariePierreLessard;
+    margin-block: $size-small-spacing-by-Marie-Pierre-Lessard;
+}
+
+@media (min-width: 768px) {
+    .gridWoPassePartoutByMariePierreLessard {
+        @include gridTabletsWRegGapByMariePierreLessard;
+    }
+}
+
+.gridWPassePartoutByMariePierreLessard {
+    @include gridMobilesWRegGapByMariePierreLessard;
+    padding: $size-small-spacing-by-Marie-Pierre-Lessard;
+}
+
+@media (min-width: 768px) {
+    .gridWPassePartoutByMariePierreLessard {
+        @include gridTabletsWRegGapByMariePierreLessard;
+    }
+}
