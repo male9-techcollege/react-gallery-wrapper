@@ -1,3 +1,4 @@
+import "./App.scss"; 
 import sharedstyles from "./styles/globals.module.scss";
 import mainstyling from "./components/main-el/main-el.module.scss";
 import gridstyling from "./components/atoms/grid.module.scss";
