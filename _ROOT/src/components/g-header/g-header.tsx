@@ -9,7 +9,7 @@ export function GlobalHeaderByMariePierreLessard() {
             <div className={`
                 ${sharedstyles.wrapperByMariePierreLessard}
                 ${sharedstyles.secondaryWrapperByMariePierreLessard}
-                ${sharedstyles.centeredByMariePierreLessard}
+                ${sharedstyles.centeredSelfByMariePierreLessard}
             `}>
                 react-gallery-wrapper
             </div>

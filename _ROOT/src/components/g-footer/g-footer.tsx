@@ -11,7 +11,7 @@ export function GlobalFooterByMariePierreLessard() {
             <div className={`
                 ${sharedstyles.wrapperByMariePierreLessard}
                 ${sharedstyles.secondaryWrapperByMariePierreLessard}
-                ${sharedstyles.centeredByMariePierreLessard}
+                ${sharedstyles.centeredSelfByMariePierreLessard}
             `}>
                 <small>
                     &copy; 2026. Coding and pictures by Marie-Pierre Lessard. License: MIT (attribution required).

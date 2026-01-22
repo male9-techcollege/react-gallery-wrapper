@@ -3,24 +3,20 @@ and my relatively extensive research on generic interface to use with specific H
 (see region of the same name in file main-el.tsx). 
 */
 
-/* The following module does style the h2 (no class name given) */
-import typography from "../../styles/typography.module.scss";
 import type { HTMLAttributes } from "react";
 
-interface sectionTwoByMariePierreLessard {
-    h2: string;
+interface justChildrenByMariePierreLessard {
     /* children is a reserved word in React! The app will break if I changed it.
     I found that out in the modal assignment (see folder react-pros-and-cons). Source: Kasper. */
     children: React.ReactNode;
 };
 
-type extendedGenericInterfaceForS2ByMariePierreLessard = HTMLAttributes<HTMLElement> & sectionTwoByMariePierreLessard;
+type extendedGenericInterfaceForDivByMariePierreLessard = HTMLAttributes<HTMLDivElement> & justChildrenByMariePierreLessard;
 
-export function SectionTwoByMariePierreLessard({ h2, children, ...rest }: extendedGenericInterfaceForS2ByMariePierreLessard) {
+export function FlexContainerByMariePierreLessard({ children, ...rest }: extendedGenericInterfaceForDivByMariePierreLessard) {
     return (
-        <section {... rest}>
-            <h2>{h2}</h2>
+        <div {... rest}>
             {children}
-        </section>
+        </div>
     );
 };

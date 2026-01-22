@@ -1,5 +1,6 @@
 @use "./styles/variables.module.scss" as *;
 
+/* #region Library styling (applied globally) */
 /* Universal selector */
 * {
     margin: 0;
@@ -9,6 +10,7 @@
 
 /* HTML element */
 :root {
+    font-family: $font-fam-root-w-fallbacks-by-Marie-Pierre-Lessard;
     font-size: $size-1rem-by-Marie-Pierre-Lessard;
     color: $clr-font-root-by-Marie-Pierre-Lessard;
     background-color: $clr-bg-root-by-Marie-Pierre-Lessard;
@@ -22,3 +24,11 @@ img {
     height: 100%;
     object-fit: cover;
 }
+/* #endregion Library styling (applied globally) */
+
+/* #region Project-specific styling goes here (overriding library styling) */
+
+
+
+/* #endregion Project-specific styling */
+

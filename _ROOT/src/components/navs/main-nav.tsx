@@ -5,6 +5,7 @@ export function MainNavByMariePierreLessard() {
         <nav className={navstyling.mainNavByMariePierreLessard}>
             <ul>
                 <li><a href="#simpleImgGallery">Exercise 1 </a></li>
+                <li><a href="#cardsWithHbf">Exercise 2 </a></li>
                 <li><a href="#globalFooter">Copyright </a></li>
             </ul>
         </nav>

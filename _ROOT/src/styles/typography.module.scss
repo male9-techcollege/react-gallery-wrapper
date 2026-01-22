@@ -1,3 +1,9 @@
+/* LIBRARY STYLING ONLY -- PUT PROJECT-SPECIFIC STYLING IN OTHER FILES
+Reminder: this is the library file with initial sizes, margins, etc. for text elements.
+This initial styling is about obtaining a minimum viable product (MVP) as fast as possible.
+This styling is meant to be overriden by project-specific styling in other files, for instance with CSS classes,
+which have a higher specificity than the HTML-element selector. */
+
 @use "./variables.module.scss" as *;
 
 /* Note about h1-h3: 

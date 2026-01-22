@@ -21,6 +21,8 @@ is supposed to be a default export. That is the syntax required with ES modules.
 */
 /* #endregion */
 
+/* #region Library styling  */
+/* #region Valid declarations in practically all projects */
 /* For main element and usually children of global header and footer and nav element 
 I considered adding a secondary-wrapper mixin here, but this would not work will all designs, particularly in the header. 
 In a template, it's more flexible to have a secondary-wrapper class. */
@@ -33,8 +35,11 @@ In a template, it's more flexible to have a secondary-wrapper class. */
 .secondaryWrapperByMariePierreLessard {
     padding-inline: $size-secondary-wrapper-by-Marie-Pierre-Lessard;
 }
+/* #endregion Valid declarations in practically all projects */
+/* #endregion Library styling */
 
-.centeredByMariePierreLessard {
+/* Project-specific styling; note: there is currently no centering in section Library styling */
+.centeredSelfByMariePierreLessard {
     justify-self: center;
 }
 
