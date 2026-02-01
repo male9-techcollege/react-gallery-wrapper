@@ -126,7 +126,11 @@ $size-gr-squared-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 2) * $size-1rem-by
 $size-sixth-gr-squared-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 2) * $size-1rem-by-Marie-Pierre-Lessard * 0.167; // For typographic margins
 
 $size-3rem-by-Marie-Pierre-Lessard: $size-1rem-by-Marie-Pierre-Lessard * 3;
-$size-gr-cubed-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 3) * $size-1rem-by-Marie-Pierre-Lessard;
+$size-grx2-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 2; //3.236
+$size-gr-cubed-rem-by-Marie-Pierre-Lessard: math.pow(1.618, 3) * $size-1rem-by-Marie-Pierre-Lessard; //4.235801032
+$size-grx3-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 3; //5.235848
+$size-grx4-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 4; 
+$size-grx5-rem-by-Marie-Pierre-Lessard: $size-gr-rem-by-Marie-Pierre-Lessard * 5; 
 /* #endregion Calculations (proportions only, based on the above) */
 
 /* #region Negative space */

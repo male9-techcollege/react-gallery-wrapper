@@ -7,10 +7,20 @@
     min-height: $size-minimum-dev-by-Marie-Pierre-Lessard;
     
     ul {
-        @include horizontalListByMariePierreLessard;
+        @include verticalListByMariePierreLessard;
         justify-self: center;
     }
 
+}
+
+@media (min-width: 768px) {
+    .mainNavByMariePierreLessard {
+    
+            ul {
+                @include horizontalListByMariePierreLessard;
+            }
+    
+        }
 }
 /* #endregion Library styling (very basic, NO responsiveness) */
 

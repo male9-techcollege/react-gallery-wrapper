@@ -50,6 +50,10 @@ the grid-specific gap under the @use rule in the scope of the selector for these
 @mixin gridMobilesWRegGapByMariePierreLessard {
     display: grid;
     grid-template-columns: 1fr;
+    /* Interestingly, grid-template-rows: auto; doesn't work in a grid with a bottom row that is an inner grid with buttons in it.
+    With the automatic sizing, that row doesn't necessarily have the same height as the button group/inner grid
+    when I set a fixed height to the buttons.
+    Result: the appearance of extra padding. */
     grid-template-rows: auto;
     gap: $size-reg-spacing-by-Marie-Pierre-Lessard;
 }

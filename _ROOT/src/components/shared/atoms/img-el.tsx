@@ -6,7 +6,7 @@ so there’s no remnant of it at runtime. Similarly, export type only provides a
 and is also erased from TypeScript’s output."
 https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html
 */
-import type { ImgHTMLAttributes } from "../../../node_modules/@types/react/index";
+import type { ImgHTMLAttributes } from "react";
 
 /* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
 // #region Sources for making attributes truly required even though they can be undefined by default (e.g. loading attribute)

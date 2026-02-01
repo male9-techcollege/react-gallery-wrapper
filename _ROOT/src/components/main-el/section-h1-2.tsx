@@ -17,7 +17,7 @@ and my relatively extensive research on generic interface to use with specific H
 import typography from "../../styles/typography.module.scss";
 import type { HTMLAttributes } from "react";
 
-interface sectionOneByMariePierreLessard {
+interface sectionH1to2ByMariePierreLessard {
     h1: string;
     h2: string;
     /* children is a reserved word in React! The app will break if I changed it.
@@ -25,9 +25,11 @@ interface sectionOneByMariePierreLessard {
     children: React.ReactNode;
 };
 
-type extendedGenericInterfaceForS1ByMariePierreLessard = HTMLAttributes<HTMLElement> & sectionOneByMariePierreLessard;
+type extendedGenericInterfaceForSh1to2ByMariePierreLessard = HTMLAttributes<HTMLElement> & sectionH1to2ByMariePierreLessard;
 
-export function SectionOneByMariePierreLessard({ h1, h2, children, ...rest }: extendedGenericInterfaceForS1ByMariePierreLessard) {
+export function SectionH1to2ByMariePierreLessard(
+    { h1, h2, children, ...rest }: 
+    extendedGenericInterfaceForSh1to2ByMariePierreLessard) {
     return (
         <section {... rest}>
             <h1>{h1}</h1>
