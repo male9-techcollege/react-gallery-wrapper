@@ -94,7 +94,7 @@ Jun 1, 2024 (...)
 https://medium.com/@husnain.ashfaq3939/link-component-vs-anchor-tag-href-in-reactjs-and-nextjs-d73c406c41be */
 // #endregion Research that was not immediately useful, but could turn out to help
 
-type extendedGenericInterfaceForCardWithLinkByMariePierreLessard = AnchorHTMLAttributes<HTMLAnchorElement> 
+type extendedGenericInterfaceForCardWithLinkByMariePierreLessard = AnchorHTMLAttributes<HTMLAnchorElement>
     & anchorCardInterfaceByMariePierreLessard;
 
 export function CardWithExternalLinkAndArticleByMariePierreLessard(

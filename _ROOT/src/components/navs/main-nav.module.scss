@@ -9,6 +9,11 @@
     ul {
         @include verticalListByMariePierreLessard;
         justify-self: center;
+
+        a {
+            display: block;
+            min-height: $size-minimum-dev-by-Marie-Pierre-Lessard;
+        }
     }
 
 }
@@ -21,6 +26,10 @@
             }
     
         }
+}
+
+.activeNavLinkByMariePierreLessard {
+    background-color: $clr-bg-globalheader-by-Marie-Pierre-Lessard;
 }
 /* #endregion Library styling (very basic, NO responsiveness) */
 

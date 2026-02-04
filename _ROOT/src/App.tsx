@@ -1,183 +1,97 @@
+/* Eneste opgave fra sektion 3.3 (Routing): Byg en React Router
+Indsæt en router i en React-applikation (en ny eller tidligere react app).
+Opgavekrav:
+FÆRDIG - Du skal opsætte en router med det antal links som din React-applikation angiver. 
+FÆRDIG - Din router skal også have en route der bliver vist, hvis der ikke er et match med en lokation (en fejlside).
+FÆRDIG - Indholdet på nye sider skal du selv finde på, men forsøg så vidt muligt at holde designet på dine sider i den samme stil.  
+FÆRDIG - Det valgte menupunkt skal sættes til aktivt. 
+FÆRDIG - Alle sider skal vises med menupunktets tekst som sidetitel. 
+*/
+/* Source for the creation of a router, incl. course notes:
+react-router-codealong-med-kasper
+*/
+import { BrowserRouter, Routes, Route } from "react-router";
 import "./App.scss";
-import sharedstyles from "./styles/globals.module.scss";
-import mainstyling from "./components/main-el/main-el.module.scss";
-import gridstyling from "./components/shared/atoms/grid.module.scss";
-import imgstyling from "./components/shared/atoms/img-el.module.scss";
-import anchorcardstyling from "./components/shared/m-and-o/card-anchor.module.scss";
-//import cardstyling from "./components/shared/m-and-o/card.module.scss";
+import { GlobalLayoutByMariePierreLessard } from "./layouts/global-layout";
+import { WrapperByMariePierreLessard } from "./pages/home";
+import { CardsByMariePierreLessard } from "./pages/cards";
+import { WidgetByMariePierreLessard } from "./pages/widget";
+import { ErrorPageByMariePierreLessard } from "./pages/notfound";
 
-import { GlobalHeaderByMariePierreLessard } from "./components/g-header/g-header";
-import { MainNavByMariePierreLessard } from "./components/navs/main-nav";
-import { MainByMariePierreLessard } from "./components/main-el/main-el";
-import { SectionH1to2ByMariePierreLessard } from "./components/main-el/section-h1-2";
-import { GridByMariePierreLessard } from "./components/shared/atoms/grid";
-import { ImgComponentByMariePierreLessard } from "./components/shared/atoms/img-el";
-import { SectionH2ByMariePierreLessard } from "./components/main-el/section-h2";
-import {
-    CardWithExternalLinkAndArticleByMariePierreLessard,
-    CardWithInternalLinkAndArticleByMariePierreLessard,
-    Card3PartsWithExternalLinkAndArticleByMariePierreLessard,
-    Card3PartsWithInternalLinkAndArticleByMariePierreLessard
-} from "./components/shared/m-and-o/card-anchor";
-import { StopwatchByMariePierreLessard } from "./components/widgets/stopwatch"
-import {
-    CardBodyByMariePierreLessard,
-    CardFooterByMariePierreLessard
-} from "./components/shared/atoms/card-parts";
-import { HeadingElByMariePierreLessard } from "./components/shared/atoms/heading";
-import { GlobalFooterByMariePierreLessard } from "./components/g-footer/g-footer";
+/* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
+// #region Sources about routing (3 routing modes; client-side routing vs. server-side routing), routes, slugs
+/* Declarative routing (simple compared to other options)
+The following will give: 
+http://localhost:port/<enter path here; include initial slash in relative path, obviously!>
 
-import woman from "./assets/blondine_akkc_img089.webp";
-import man from "./assets/mc_akkc_img064.webp";
+"There are three primary ways, or "modes", to use it in your app, so there are three guides to get you started.
+Declarative
+Data
+Framework"
+https://reactrouter.com/home
 
+Question I asked myself: what is the difference between a slug and a route?
+A slug is part of a route. The slug doesn't include the slash, as the following source shows.
+"When Next.js sees this folder:
+app/blog/[slug]/page.js
+It understands:
+[slug] is a variable
+This page can handle any blog URL
+The value will come from the URL itself"
+https://medium.com/codetodeploy/dynamic-routes-slugs-in-next-js-how-real-world-apps-design-their-urls-16f681869c21
+
+Reading about client-side routing with BrowserRouter vs. server-side routing:
+"A declarative <Router> using the browser History API for client-side routing. (...)
+<Route> components describing your route configuration"
+https://reactrouter.com/api/declarative-routers/BrowserRouter 
+      
+"2. How does client-side routing in React Router differ from traditional server-side routing?
+In client-side routing (used by React Router), only a portion of the page changes when navigating between routes, as React handles the navigation and updates the URL without a page reload. In server-side routing, each navigation request triggers a full page load from the server, causing the entire page to reload.
+3. What is the purpose of <BrowserRouter>, and how does it differ from <HashRouter>?
+<BrowserRouter> uses the HTML5 history API to create clean, user-friendly URLs without hash symbols. <HashRouter>, on the other hand, uses the hash portion of the URL (e.g., /#) and is useful for simpler setups where you want to avoid configuring the server to handle different paths."
+https://souvikmajumder31.medium.com/full-stack-developer-interview-questions-2024-part-1-react-js-fb2a413099d0  
+
+Research about <Routes> and <Route>:
+The following are component routes according to the react-router documentation.
+"Component Routes
+You can also use components that match the URL to elements anywhere in the component tree: (...)
+Note that these routes do not participate in data loading, actions, code splitting, or any other route module features,
+so their use cases are more limited than those of the route module."
+https://reactrouter.com/start/framework/routing
+In that documentation page, the component called <Routes> is only used with
+individual <Route> elements (component routes)
+and vice versa.
+"5. What is the <Switch> (or <Routes> in v6) component, and why is it useful?
+<Switch> (in v5) or <Routes> (in v6) renders the first matching route within its children, ensuring that only one route is rendered at a time. In React Router v6, <Routes> replaced <Switch> to offer a more streamlined API."
+https://souvikmajumder31.medium.com/full-stack-developer-interview-questions-2024-part-1-react-js-fb2a413099d0
+
+*/
+// #endregion 
 function App() {
 
-    /* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
-    // #region Sources for concatenation/combination of CSS classes in React
-    /* The following combines a class from the CSS file with Tailwind styling (source: Kasper).
-    Interestingly, even though Tailwind is supposed to be inline styling with the highest specificity,
-    in this system, it is overriden by the styling in the CSS files. 
-    <button className={style.buttonClass + " " + "shadow-2xl shadow-white"} onClick={handleClick}>Click me!</button>
- 
-    It is also possible to concatenate CSS class names as follows:
-    "BlueKnight3108 (...)
-    <div className={`${styles.class1} ${styles.class2} ${styles.classN}`}>"
-    https://www.reddit.com/r/reactjs/comments/q1apj7/how_to_add_multiple_classes_to_classname_using/
-    */
-    // #endregion
     return (
         <>
-            <GlobalHeaderByMariePierreLessard />
-            <MainNavByMariePierreLessard />
-            <MainByMariePierreLessard
-                className={`
-                    ${sharedstyles.wrapperByMariePierreLessard} 
-                    ${sharedstyles.secondaryWrapperByMariePierreLessard} 
-                    ${mainstyling.pageBasicsByMariePierreLessard}
-                `}
-            >
-                <SectionH1to2ByMariePierreLessard
-                    id={"simpleImgGallery"}
-                    h1={"React Child Components"}
-                    h2={"Exercise 1 from section 2.8"}
-                >
-                    <GridByMariePierreLessard className={gridstyling.responsiveGridWoPassePartoutByMariePierreLessard}>
-                        <ImgComponentByMariePierreLessard
-                            src={woman}
-                            alt={"Blond woman. Graffiti at AKKC, Aalborg."}
-                            loading={"eager"}
-                            className={imgstyling.filterByMariePierreLessard}
-                        />
-                        <ImgComponentByMariePierreLessard
-                            src={man}
-                            alt={"Man. Graffiti at AKKC, Aalborg."}
-                            loading={"eager"}
-                            className={imgstyling.filterByMariePierreLessard}
-                        />
-                    </GridByMariePierreLessard>
-                </SectionH1to2ByMariePierreLessard>
-                <SectionH2ByMariePierreLessard id={"cardsWithHbf"} h2={"Exercise 2 from section 2.8"}>
-                    {/* Maybe TO DO, perhaps in exercise 3: 
-                    An unordered list component styled as a grid would be better as a card
-                    container from a SEO perspective, especially if card contents comes from an array; 
-                    see main-navigation styling. 
-                    The card component itself is an anchor element. See why I chose that in card.tsx */}
-                    <GridByMariePierreLessard className={gridstyling.responsiveGridWPassePartoutByMariePierreLessard}>
-
-                        {/* I created, styled and kept the 2 following cards, which do not entirely meet
-                        the assignment specifications, to create the components (building blocks) needed 
-                        to create the organism described by the instructions. 
-                        I started with this because we never passed props more than one generation down from App(),
-                        and I wasn't sure that I guessed how to do it right. I needed to make sure that my
-                        components worked and that their styling was adequate before trying that more
-                        difficult thing. Otherwise, I could have encountered bugs stemming from the atoms and
-                        molecules while trying to build an organism. 
-                        I kept these 2 cards visible because part of my work becomes invisible in the organisms
-                        required by the specifications. Some functionality gets lost (the rest parameter can
-                        only be used to pass props to the parent component). 
-                        TO DO: edit the end if I find a solution to that one, but I don't think so! Time is short.
+            <BrowserRouter>
+                <Routes>
+                    {/* The layout route has no path attribute.
+                    It contains the elements with a path attribute which will be rendered with the given CSS styling for the layout. */}
+                    {/* The element= prop of <Route> is for the component declared in pages or layouts folder. */}
+                    <Route element={<GlobalLayoutByMariePierreLessard />} >
+                        {/* It is possible to write the following instead of index: 
+                        <Route path="/" element={<Home />} />
                         */}
-                        <CardWithExternalLinkAndArticleByMariePierreLessard
-                            href={"https://www.molieres-bloodhound.dk"}
-                            className={anchorcardstyling.unresponsiveFlexedAnchorCardAlwaysVerticalByMariePierreLessard}
-                        >
-                            <HeadingElByMariePierreLessard headingNr={3} headingText={"Example of affiliate link"} />
-                            <CardBodyByMariePierreLessard
-                                bodyContent={"Short description followed by an addition, which can also be an alternative."}
-                                className={anchorcardstyling.bodyTextByMariePierreLessard}
-                            >
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam non quibusdam veniam error.</p>
-                                <p>Lorem, ipsum.</p>
-                                <p>Nobody knows what this means.</p>
-                            </CardBodyByMariePierreLessard>
-                            <CardFooterByMariePierreLessard
-                                footerContent={"Click to learn more."}
-                                className={anchorcardstyling.footnoteByMariePierreLessard}
-                            >
-                                <p>This link will open in a new tab.</p>
-                            </CardFooterByMariePierreLessard>
-                        </CardWithExternalLinkAndArticleByMariePierreLessard>
-                        <CardWithInternalLinkAndArticleByMariePierreLessard
-                            href={"#globalFooter"}
-                            className={anchorcardstyling.unresponsiveFlexedAnchorCardAlwaysVerticalByMariePierreLessard}
-                        >
-                            <HeadingElByMariePierreLessard headingNr={3} headingText={"Name of product/service"} />
-                            <CardBodyByMariePierreLessard
-                                bodyContent={"Short description followed by an addition, which can also be an alternative."}
-                                className={anchorcardstyling.bodyTextByMariePierreLessard}
-                            >
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab.</p>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam non quibusdam veniam error.</p>
-                                <p>Lorem, ipsum.</p>
-                                <p>Nobody knows what this means.</p>
-                            </CardBodyByMariePierreLessard>
-                            <CardFooterByMariePierreLessard
-                                footerContent={"Price: 999.99 GBP"}
-                                className={anchorcardstyling.footnoteByMariePierreLessard}
-                            >
-                                <span> (No worries: the sales tax is included!)</span>
-                                <p>Click to learn more.</p>
-                            </CardFooterByMariePierreLessard>
-                        </CardWithInternalLinkAndArticleByMariePierreLessard>
-
-                        <Card3PartsWithExternalLinkAndArticleByMariePierreLessard
-                            href={"https://www.molieres-bloodhound.dk"}
-                            className={anchorcardstyling.unresponsiveFlexedAnchorCardAlwaysVerticalByMariePierreLessard}
-                            headingNr={3}
-                            headingText={"Example of affiliate link"}
-                            bodyContent={"Short description followed by an addition, which can also be an alternative."}
-                            footerContent={"Click to learn more. This link will open in a new tab."}
-                        >
-                            <ImgComponentByMariePierreLessard
-                                src={woman}
-                                alt={"Blond woman. Graffiti at AKKC, Aalborg."}
-                                loading={"eager"}
-                                className={imgstyling.filterByMariePierreLessard}
-                            />
-                        </Card3PartsWithExternalLinkAndArticleByMariePierreLessard>
-                        <Card3PartsWithInternalLinkAndArticleByMariePierreLessard
-                            href={"#globalFooter"}
-                            className={anchorcardstyling.unresponsiveFlexedAnchorCardAlwaysVerticalByMariePierreLessard}
-                            headingNr={3}
-                            headingText={"Name of product/service"}
-                            bodyContent={"Short description followed by an addition, which can also be an alternative."}
-                            footerContent={"Price: 999.99 GBP (No worries: the sales tax is included!) Click to learn more."}
-                        >
-                            <ImgComponentByMariePierreLessard
-                                src={man}
-                                alt={"Man. Graffiti at AKKC, Aalborg."}
-                                loading={"eager"}
-                                className={imgstyling.filterByMariePierreLessard}
-                            />
-                        </Card3PartsWithInternalLinkAndArticleByMariePierreLessard>
-                    </GridByMariePierreLessard>
-                </SectionH2ByMariePierreLessard>
-                <SectionH2ByMariePierreLessard id={"stopwatch"} h2={"Exercise in section 3.1.2"}>
-                    <StopwatchByMariePierreLessard />
-                </SectionH2ByMariePierreLessard>
-            </MainByMariePierreLessard>
-            <GlobalFooterByMariePierreLessard />
+                        <Route index element={<WrapperByMariePierreLessard />} />
+                        <Route path="/cards-with-hbf" element={<CardsByMariePierreLessard />} />
+                        <Route path="/stopwatch" element={<WidgetByMariePierreLessard />} />
+                        {/* Fallback page, i.e. error 404 page (in case user enters wrong URL) 
+          
+                        The wildcard (*) means all paths. In previous versions of react-router, this path with a wildcard had to be listed
+                        at the end because the routes were read in order. Now, it doesn't seem to matter. 
+                        */}
+                        <Route path="/*" element={<ErrorPageByMariePierreLessard />} />
+                    </Route>
+                </Routes>    
+            </BrowserRouter>
         </>
     );
 };

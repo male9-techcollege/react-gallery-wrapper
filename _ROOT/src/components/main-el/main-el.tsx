@@ -1,4 +1,5 @@
-import type { HTMLAttributes } from "../../../node_modules/@types/react/index";
+import type { HTMLAttributes, Dispatch, SetStateAction } from "react";
+// This also works: import type { HTMLAttributes } from "../../../node_modules/@types/react/index";
 
 interface justChildrenByMariePierreLessard {
     /* children is a reserved word in React! The app will break if I changed it.
