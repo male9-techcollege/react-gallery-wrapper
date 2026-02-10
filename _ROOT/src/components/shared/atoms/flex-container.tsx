@@ -13,10 +13,20 @@ interface justChildrenByMariePierreLessard {
 
 type extendedGenericInterfaceForDivByMariePierreLessard = HTMLAttributes<HTMLDivElement> & justChildrenByMariePierreLessard;
 
-export function FlexContainerByMariePierreLessard({ children, ...rest }: extendedGenericInterfaceForDivByMariePierreLessard) {
+export const FlexContainerByMariePierreLessard = ({ children, ...rest }: extendedGenericInterfaceForDivByMariePierreLessard)=> {
     return (
         <div {... rest}>
             {children}
         </div>
+    );
+};
+
+type extendedGenericInterfaceForUlByMariePierreLessard = HTMLAttributes<HTMLUListElement> & justChildrenByMariePierreLessard;
+
+export const FlexContainerWithUlByMariePierreLessard = ({ children, ...rest }: extendedGenericInterfaceForUlByMariePierreLessard) => {
+    return (
+        <ul {...rest}>
+            {children}
+        </ul>
     );
 };

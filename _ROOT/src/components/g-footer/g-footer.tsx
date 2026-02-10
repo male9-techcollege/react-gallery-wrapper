@@ -3,7 +3,9 @@ import typography from "../../styles/typography.module.scss";
 import sharedstyles from "../../styles/globals.module.scss";
 import footerstyling from "./g-footer.module.scss";
 
-export function GlobalFooterByMariePierreLessard() {
+export const GlobalFooterByMariePierreLessard = ()=> {
+    /* The following is a JSX template. 
+    Source: NetNinja, "Full React Tutorial #3: Components and Templates" on YouTube */
     return (
         <footer id="globalFooter" className={`
             ${footerstyling.gFooterByMariePierreLessard} 

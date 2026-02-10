@@ -97,9 +97,9 @@ https://medium.com/@husnain.ashfaq3939/link-component-vs-anchor-tag-href-in-reac
 type extendedGenericInterfaceForCardWithLinkByMariePierreLessard = AnchorHTMLAttributes<HTMLAnchorElement>
     & anchorCardInterfaceByMariePierreLessard;
 
-export function CardWithExternalLinkAndArticleByMariePierreLessard(
+export const CardWithExternalLinkAndArticleByMariePierreLessard = (
     { href, target, rel, children, ...rest }:
-        extendedGenericInterfaceForCardWithLinkByMariePierreLessard) {
+        extendedGenericInterfaceForCardWithLinkByMariePierreLessard)=> {
 
     let hrefWithFallbackByMariePierreLessard = href || "javascript:void(0)";
     /* Source: https://www.w3schools.com/tags/att_a_target.asp */
@@ -126,9 +126,9 @@ export function CardWithExternalLinkAndArticleByMariePierreLessard(
     );
 };
 
-export function CardWithInternalLinkAndArticleByMariePierreLessard(
+export const CardWithInternalLinkAndArticleByMariePierreLessard = (
     { href, target, rel, children, ...rest }:
-        extendedGenericInterfaceForCardWithLinkByMariePierreLessard) {
+        extendedGenericInterfaceForCardWithLinkByMariePierreLessard)=> {
 
     let hrefWithFallbackByMariePierreLessard = href || "#globalFooter";
     /* Source: https://www.w3schools.com/tags/att_a_target.asp */
@@ -167,9 +167,9 @@ I don't think that this option would make the styling easy or the app maintainab
 & extendedGenericInterfaceForCardFooterByMariePierreLessard;
 */
 
-export function Card2PartsWithExternalLinkAndArticleByMariePierreLessard(
+export const Card2PartsWithExternalLinkAndArticleByMariePierreLessard = (
     { href, target, rel, bodyContent, footerContent, children, ...rest }:
-        extendedGenericInterfaceForAnchorCard2PartsByMariePierreLessard) {
+        extendedGenericInterfaceForAnchorCard2PartsByMariePierreLessard)=> {
 
     let hrefWithFallbackByMariePierreLessard = href || "javascript:void(0)";
     /* Source: https://www.w3schools.com/tags/att_a_target.asp */
@@ -202,9 +202,9 @@ export function Card2PartsWithExternalLinkAndArticleByMariePierreLessard(
     );
 };
 
-export function Card2PartsWithInternalLinkAndArticleByMariePierreLessard(
+export const Card2PartsWithInternalLinkAndArticleByMariePierreLessard = (
     { href, target, rel, bodyContent, footerContent, children, ...rest }:
-        extendedGenericInterfaceForAnchorCard2PartsByMariePierreLessard) {
+        extendedGenericInterfaceForAnchorCard2PartsByMariePierreLessard)=> {
 
     let hrefWithFallbackByMariePierreLessard = href || "#globalFooter";
     /* Source: https://www.w3schools.com/tags/att_a_target.asp */
@@ -247,9 +247,9 @@ I don't think that this option would make the styling easy or the app maintainab
 & extendedGenericInterfaceForCardFooterByMariePierreLessard;
 */
 
-export function Card3PartsWithExternalLinkAndArticleByMariePierreLessard(
+export const Card3PartsWithExternalLinkAndArticleByMariePierreLessard = (
     { href, target, rel, headingNr, headingText, bodyContent, footerContent, children, ...rest }:
-        extendedGenericInterfaceForAnchorCard3PartsByMariePierreLessard) {
+        extendedGenericInterfaceForAnchorCard3PartsByMariePierreLessard)=> {
 
     let hrefWithFallbackByMariePierreLessard = href || "javascript:void(0)";
     /* Source: https://www.w3schools.com/tags/att_a_target.asp */
@@ -283,9 +283,9 @@ export function Card3PartsWithExternalLinkAndArticleByMariePierreLessard(
     );
 };
 
-export function Card3PartsWithInternalLinkAndArticleByMariePierreLessard(
+export const Card3PartsWithInternalLinkAndArticleByMariePierreLessard = (
     { href, target, rel, headingNr, headingText, bodyContent, footerContent, children, ...rest }:
-        extendedGenericInterfaceForAnchorCard3PartsByMariePierreLessard) {
+        extendedGenericInterfaceForAnchorCard3PartsByMariePierreLessard)=> {
 
     let hrefWithFallbackByMariePierreLessard = href || "#globalFooter";
     /* Source: https://www.w3schools.com/tags/att_a_target.asp */

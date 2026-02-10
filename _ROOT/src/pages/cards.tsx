@@ -25,7 +25,7 @@ import { HeadingElByMariePierreLessard } from "../components/shared/atoms/headin
 import woman from "../assets/blondine_akkc_img089.webp";
 import man from "../assets/mc_akkc_img064.webp";
 
-export function CardsByMariePierreLessard() {
+export const CardsByMariePierreLessard = ()=> {
 
     /* See notes and sources regarding useOutletContext in file global-layout.tsx
     See also experimentation notes in home.tsx 

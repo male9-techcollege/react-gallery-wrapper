@@ -1,10 +1,10 @@
 @use "./styles/variables.module.scss" as *;
 
+/* #region Library styling for App() */
 /* This is a <div> element inside of body in index.html.
 It is where the App component is rendered. This styling is specific to that div, so it has to be applied to the App component
 from the file App.scss. It is the global styles that are supposed to be declared in main.scss.
 */
-/* #region Library styling for App() */
 #rootByMariePierreLessard {
     display: grid;
     grid-template-columns: 1fr;

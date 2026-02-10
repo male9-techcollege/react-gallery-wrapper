@@ -22,7 +22,8 @@ function to toggle a boolean value and conditional expression inside of return()
 */
 // #endregion School sources
 /* Svar fra Kasper:
-(Maybe TO DO) Funktioner skal i filer til helper (utilities) funktioner, hvis en knap skal modtage forskellige funktioner som prop. 
+(Maybe TO DO) 
+Funktioner skal i filer til helper (utilities) funktioner, hvis en knap skal modtage forskellige funktioner som prop. 
 Det er kun tilstand (states), som skal blive så tæt på komponentet som muligt. 
  */
 
@@ -58,8 +59,34 @@ export const MultiTypeBtnComponentByMariePierreLessard = (
     This button does NOT work in the stopwatch assignment (where it is a reset button) 
     unless I write that (i.e. unless I include parentheses at the end). 
     No argument is sent by this reset button.
+
+    I found a clear explanation for that in the following source: 
+    NetNinja, "Full Modern React Tutorial #7: Click Events" on YouTube 
+
+    In a nutshell, 
+    onClick={action}
+    and
+    onClick={() => action()}
+    and
+    onClick={() => {
+        action();
+    }}
+    are equivalent because the variable "action" and the arrow function are not invoked/called on mounting.
+    What is inside of the arrow function is only invoked/called if the arrow function is executed, which is what
+    the on-click event listener does.
+    The following is invoked on mounting because of the parentheses, which lead to the execution of that function
+    as soon as the browser reads the code:
+    onClick={action()}
+  
+    When I include the curly brackets of the arrow function, as follows, I can see why action must be followed by parentheses
+    in an arrow function.
+    onClick={() => {
+        action();
+    }}
+    If there were no parenthesis, action would look like a variable with some other data type than function. 
+    The parentheses are necessary to get the function executed.
     */
-    return (
+        return (
         <button type={type} onClick={() => action()} {...rest} >
             {children}
         </button>
@@ -97,7 +124,7 @@ interface toggleBtnInterfaceByMariePierreLessard {
        Dispatch<SetStateAction<number>>
        or
        Dispatch<SetStateAction<boolean>>
-       based on the sources above.
+       based on the above sources.
        However, is it completely equivalent? If one solution is superior to the other, I assume that it is 
        the type that is pre-defined in React, so it might be best to use that one. 
     */
@@ -135,8 +162,8 @@ export const ToggleBtnComponentByMariePierreLessard = (
     Maybe TO DO (if useful in assignment): implement that in some use of the components for replacing 
     numbers and strings.
     Indeed, that is not how I already designed my interface for the toggle button, which worked in the colour-mode-switching 
-    and stopwatch assignments. My interface requires a boolean value to be passed as a prop, and it is button's event listener 
-    that does the toggling. 
+    and stopwatch assignments. My interface requires a boolean value to be passed as a prop, and it is the button's event 
+    listener that does the toggling. 
     */
     return (
         <button type={type} onClick={() => toggleAction(!booleanState)} {...rest} >
@@ -184,9 +211,7 @@ interface numericStateBtnInterfaceByMariePierreLessard {
        the type that is pre-defined in React, so it might be best to use that one. 
     */
     // #endregion
-    /* The following is not necessary if I want to avoid putting an argument in the function given in the on-click attribute:
     numericState: number;
-    */
     updateNAction: Dispatch<SetStateAction<number>>; //A setter function that replaces a numeric value, e.g. in a counter (correct: see node_modules/@types/react/ts5.0/index.d.ts)
 };
 
@@ -194,16 +219,18 @@ type extendedGenericInterfaceForNumericStateBtnByMariePierreLessard = ButtonHTML
     & numericStateBtnInterfaceByMariePierreLessard;
 
 export const NumericStateBtnComponentByMariePierreLessard = (
-    { type, children, updateNAction, ...rest }:
+    { type, children, numericState, updateNAction, ...rest }:
         extendedGenericInterfaceForNumericStateBtnByMariePierreLessard) => {
 
     /* Kasper said that it is a lot easier to define the action outside of the button component
     and pass it as a prop.
     Result: 
     onClick={updateNAction}
+    However, unless I write the following, I get an error, e.g. an argument is expected.
+    onClick={() => updateNAction(numericState)}
     */
     return (
-        <button type={type} onClick={() => updateNAction} {...rest} >
+        <button type={type} onClick={() => updateNAction(numericState)} {...rest} >
             {children}
         </button>
     );
@@ -213,17 +240,15 @@ export const NumericStateBtnComponentByMariePierreLessard = (
 interface stringStateBtnInterfaceByMariePierreLessard {
     type: string; //The type attribute of button element
     children: React.ReactNode; //There needs to be at least a text node present, or the button has nothing on it. Reminder: the value attribute works differently than on an input.
-    /* The following is not necessary if I want to avoid putting an argument in the function given in the on-click attribute:
-    stringState: string;
-    */
-    updateSAction: Dispatch<SetStateAction<string>>; //A setter function that replaces a string (I am guessing that it should work in the same way as with a state with type number, see numericStateBtnInterfaceByMariePierreLessard)
+    stringState: string; //This will only work if a single string is replaced. If multiple strings need to be replaced (e.g. by a reset button), I think that the type is an array of strings. I used the multi-type button to reset, and it works fine.
+    updateSAction: Dispatch<SetStateAction<string>>; //A setter function that replaces a string (I guessed that it would work in the same way as with a state with type number; Kasper later used it in react-wallywood-codealong-med-kasper)
 };
 
 type extendedGenericInterfaceForStringStateBtnByMariePierreLessard = ButtonHTMLAttributes<HTMLButtonElement>
     & stringStateBtnInterfaceByMariePierreLessard;
 
 export const StringStateBtnComponentByMariePierreLessard = (
-    { type, children, updateSAction, ...rest }:
+    { type, children, stringState, updateSAction, ...rest }:
         extendedGenericInterfaceForStringStateBtnByMariePierreLessard) => {
 
     // #region Sources and various notes
@@ -321,7 +346,7 @@ const eventHandlerByMariePierreLessard = () => {
  // #endregion Sources and various notes 
 
     return (
-        <button type={type} onClick={() => updateSAction} {...rest} >
+        <button type={type} onClick={() => updateSAction(stringState)} {...rest} >
             {children}
         </button>
     );

@@ -12,7 +12,7 @@ import { ImgComponentByMariePierreLessard } from "../components/shared/atoms/img
 import woman from "../assets/blondine_akkc_img089.webp";
 import man from "../assets/mc_akkc_img064.webp";
 
-export function WrapperByMariePierreLessard() {
+export const WrapperByMariePierreLessard = ()=> {
 
     /* See notes and sources regarding useOutletContext in file global-layout.tsx 
     Interestingly, I get an error until I specify that the type of useOutletContext is any.

@@ -1,7 +1,7 @@
 /* Source for the creation of a layout, incl. course notes:
 react-router-codealong-med-kasper
 */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router";
 import sharedstyles from "../styles/globals.module.scss";
 import mainstyling from "../components/main-el/main-el.module.scss";
@@ -30,7 +30,7 @@ https://www.reddit.com/r/reactjs/comments/q1apj7/how_to_add_multiple_classes_to_
 */
 // #endregion
 
-export function GlobalLayoutByMariePierreLessard() {
+export const GlobalLayoutByMariePierreLessard = ()=> {
 
     /* According to Kasper, NavLink components allow styling based on a state.
     The default active navigation item is the home page. On that page, the exercise about a React wrapper is displayed.
@@ -54,7 +54,6 @@ export function GlobalLayoutByMariePierreLessard() {
         <>
             <GlobalHeaderByMariePierreLessard />
             <MainNavByMariePierreLessard 
-                state={activeNavItemByMariePierreLessard} 
                 setter={setActiveNavItemByMariePierreLessard} 
             />
             <MainByMariePierreLessard

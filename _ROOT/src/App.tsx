@@ -16,6 +16,8 @@ import { GlobalLayoutByMariePierreLessard } from "./layouts/global-layout";
 import { WrapperByMariePierreLessard } from "./pages/home";
 import { CardsByMariePierreLessard } from "./pages/cards";
 import { WidgetByMariePierreLessard } from "./pages/widget";
+import { FormPageByMariePierreLessard } from "./pages/form";
+import { ThankYouPageByMariePierreLessard } from "./pages/thanks";
 import { ErrorPageByMariePierreLessard } from "./pages/notfound";
 
 /* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
@@ -83,6 +85,8 @@ function App() {
                         <Route index element={<WrapperByMariePierreLessard />} />
                         <Route path="/cards-with-hbf" element={<CardsByMariePierreLessard />} />
                         <Route path="/stopwatch" element={<WidgetByMariePierreLessard />} />
+                        <Route path="/form" element={<FormPageByMariePierreLessard />} />
+                        <Route path="/form/thanks" element={<ThankYouPageByMariePierreLessard />} />
                         {/* Fallback page, i.e. error 404 page (in case user enters wrong URL) 
           
                         The wildcard (*) means all paths. In previous versions of react-router, this path with a wildcard had to be listed

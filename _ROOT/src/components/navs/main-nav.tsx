@@ -35,13 +35,15 @@ the component's active state.
 https://reactrouter.com/6.14.2/upgrading/v5#remove-activeclassname-and-activestyle-props-from-navlink-
 */
 interface mainNavInterfaceByMariePierreLessard {
+    /* The purpose of this setter is to give content to the h1 of the page. */
     setter: Dispatch<SetStateAction<string>>;
 };
 
-export function MainNavByMariePierreLessard({ setter }: mainNavInterfaceByMariePierreLessard) {
+export const MainNavByMariePierreLessard = ({ setter }: mainNavInterfaceByMariePierreLessard)=> {
 
-    /* In the following nav, the setter-prop of NavLink replaces the existing state by the text node of NavLink. */
-    /* "The NavLink component builds upon Link by adding functionality to display the active link visually. It inherits all the functionalities of Link but with an additional prop: isActive.
+    /* In the following nav, the setter prop of NavLink replaces the existing state by the text node of NavLink. */
+    /* "The NavLink component builds upon Link by adding functionality to display the active link visually. It inherits 
+    all the functionalities of Link but with an additional prop: isActive.
     Here’s an example of a NavLink component:
     import { NavLink } from 'react-router-dom';
     function MyNavLink() {
@@ -49,11 +51,15 @@ export function MainNavByMariePierreLessard({ setter }: mainNavInterfaceByMarieP
         <NavLink to="/about" activeClassName="active">About Us</NavLink>
       );
     }
-    This code creates a link similar to the previous example, but it also includes the activeClassName prop set to "active." When this link is on the active route (e.g., the user is currently viewing the /about page), the active class is added to the rendered element, allowing you to style it differently. This provides a visual cue to the user about their current location within the application."
+    This code creates a link similar to the previous example, but it also includes the activeClassName prop set to 
+    "active." When this link is on the active route (e.g., the user is currently viewing the /about page), the active class 
+    is added to the rendered element, allowing you to style it differently. This provides a visual cue to the user about 
+    their current location within the application."
     https://medium.com/@adebimpeniola/link-vs-navlink-choosing-the-right-path-in-react-router-dom-8f85a744502c
 
     "Here are some of the features of NavLink:
-    - ActiveClassName: This prop takes a string and adds the specified class name to the link when it's active. You can use this prop to create a style that will be applied when the NavLink is active."
+    - ActiveClassName: This prop takes a string and adds the specified class name to the link when it's active. You can use 
+    this prop to create a style that will be applied when the NavLink is active."
     https://www.geeksforgeeks.org/reactjs/difference-between-navlink-an-link/
     */
     return (
@@ -63,6 +69,16 @@ export function MainNavByMariePierreLessard({ setter }: mainNavInterfaceByMarieP
                     {/* Old version (from previous assignment): 
                     <a href="#simpleImgGallery">My wrapper</a>
                     */}
+                    {/* Templates can output three data types thanks to variables:
+                    strings
+                    numbers
+                    arrays
+                    Numbers and arrays get converted into a string. E.g.:
+                    0 becomes "0"
+                    [1,2,3,4] becomes "1234"
+                    Functions that return one of these 3 data types can be entered between curly brackets inside of 
+                    the template.
+                    Source: NetNinja, "Full React Tutorial #4: Dynamic Values in Templates" on YouTube */}
                     <NavLink 
                         to="/" 
                         onClick={() => setter("My Wrapper")} 
@@ -93,6 +109,15 @@ export function MainNavByMariePierreLessard({ setter }: mainNavInterfaceByMarieP
                         className={({ isActive }) => (isActive ? `${navstyling.activeNavLinkByMariePierreLessard}` : "")}
                     >
                         My Stopwatch
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink 
+                        to="/form" 
+                        onClick={() => setter("My Form")}
+                        className={({ isActive }) => (isActive ? `${navstyling.activeNavLinkByMariePierreLessard}` : "")}
+                    >
+                        My Form
                     </NavLink>
                 </li>
                 <li>
